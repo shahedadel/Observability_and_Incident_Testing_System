@@ -10,9 +10,10 @@ A small DevOps-inspired project exploring deployment failures, rollback workflow
 
 ## Goal
 This project simulates real-world deployment incidents and explores:
-- CI/CD workflows
+- CI/CD deployment workflows
 - Failure detection
 - Incident debugging
+- Observability concepts
 - Discord alerts
 - AI-generated deployment summaries
 - Rollback automation concepts
@@ -20,10 +21,12 @@ This project simulates real-world deployment incidents and explores:
 ## Endpoints
 
 ### Main Route
-`/`
+`/`           Returns basic service response.
+
 
 ### Health Check
-`/health`
+`/health`     Returns service status for monitoring.
+
 
 ## Tech Stack
 - Node.js
@@ -31,47 +34,26 @@ This project simulates real-world deployment incidents and explores:
 - GitHub
 - Vercel
 
+
+## System Flow
+
+Local Development → GitHub → Vercel → Production
+
+
 ## Planned Features
 - Simulated deployment failures
+- Controlled incident endpoints
+- Structured logging
 - Discord webhook alerts
 - AI-assisted incident summaries
 - Rollback workflow visualization
 
-# AI Rollback Demo
 
-A small DevOps-inspired project exploring deployment failures, rollback workflows, and AI-assisted incident summaries.
+## Purpose
 
-## Current Features
-- Express.js backend service
-- Health check endpoint
-- GitHub version control
-- Automatic Vercel deployment
+A sandbox for understanding: 
 
-## Goal
-This project simulates real-world deployment incidents and explores:
-- CI/CD workflows
-- Failure detection
-- Incident debugging
-- Discord alerts
-- AI-generated deployment summaries
-- Rollback automation concepts
-
-## Endpoints
-
-### Main Route
-`/`
-
-### Health Check
-`/health`
-
-## Tech Stack
-- Node.js
-- Express.js
-- GitHub
-- Vercel
-
-## Planned Features
-- Simulated deployment failures
-- Discord webhook alerts
-- AI-assisted incident summaries
-- Rollback workflow visualization
+- how production systems fail
+- how deployments propagate changes
+- how incidents are observed and debugged
+- how rollback systems conceptually work
