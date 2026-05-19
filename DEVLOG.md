@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # AI Rollback Demo - Dev Log
 
 ## Day 1
@@ -302,4 +301,3 @@ Next Steps:
 - analyze logs
 - connect Discord alerts
 - generate AI incident summaries
->>>>>>> 5022d1f (migrate project into correct Vercel-connected repo)
