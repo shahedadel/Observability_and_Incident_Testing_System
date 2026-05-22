@@ -158,3 +158,81 @@ Next Steps:
 - add observability (structured logging)
 - explore rollback workflows
 - integrate AI-generated incident summaries
+
+
+## Day 2 -- Controlled Incident Simulation
+
+### Goal
+Move from random application crashes to structured, controllable failure modeling.
+
+---
+
+## Failure Taxonomy
+
+Implemented categorized incident simulation types:
+
+- runtime_error
+- timeout
+- memory_spike
+- dependency_failure
+
+What I learned: Production failures are not all the same. Different failure classes represent different operational behaviors and debugging strategies.
+
+---
+
+## Dynamic Incident Triggering
+
+Added query-parameter-based incident selection:
+
+/trigger-error?type=timeout
+/trigger-error?type=memory_spike
+/trigger-error?type=runtime_error
+/trigger-error?type=dependency_failure
+
+Instead of hardcoding one failure into the application, the system can now simulate different incident types dynamically through the URL.
+
+## Structured Incident Objects
+
+Added structured incident metadata:
+
+{
+  "type": "runtime_error",
+  "route": "/trigger-error",
+  "severity": "high",
+  "timestamp": "ISO timestamp"
+}
+
+Structured logging creates consistency for monitoring systems and future observability tooling.
+
+## Input Validation
+
+Added validation for unsupported failure types.
+
+Invalid requests now return:
+
+- HTTP 400
+- supported failure categories
+
+Example invalid request:
+
+/trigger-error?type=banana
+
+I did this because operational systems should reject invalid states predictably instead of failing silently.
+
+## Summary of what was completed:
+
+- controlled failure endpoints
+- failure types system
+- structured incident objects
+- basic logging 
+
+
+## Next Steps:
+
+- improve structured logging consistency
+- build an incident history endpoint
+- add basic failure metrics tracking
+- simulate additional failure scenarios
+- integrate Discord alerts (later phase)
+- experiment with AI-generated incident summaries (later phase)
+
