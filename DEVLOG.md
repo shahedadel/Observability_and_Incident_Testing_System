@@ -183,11 +183,12 @@ What I learned: Production failures are not all the same. Different failure clas
 ## Dynamic Incident Triggering
 
 Added query-parameter-based incident selection:
-
+```javascript
 /trigger-error?type=timeout
 /trigger-error?type=memory_spike
 /trigger-error?type=runtime_error
 /trigger-error?type=dependency_failure
+```
 
 Instead of hardcoding one failure into the application, the system can now simulate different incident types dynamically through the URL.
 
@@ -195,12 +196,12 @@ Instead of hardcoding one failure into the application, the system can now simul
 
 Added structured incident metadata:
 
-{
+```javascript
   "type": "runtime_error",
   "route": "/trigger-error",
   "severity": "high",
   "timestamp": "ISO timestamp"
-}
+```
 
 Structured logging creates consistency for monitoring systems and future observability tooling.
 
