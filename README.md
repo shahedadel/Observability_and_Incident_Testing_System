@@ -47,7 +47,7 @@ Supported failure types:
 | dependency_failure | Simulates upstream service failure |
 
 ### Example Requests
-
+```javascript
 /trigger-error?type=runtime_error
 
 /trigger-error?type=timeout
@@ -55,6 +55,7 @@ Supported failure types:
 /trigger-error?type=memory_spike
 
 /trigger-error?type=dependency_failure
+```
 
 ### Validation
 
@@ -65,7 +66,9 @@ Unsupported failure types return:
 
 Example invalid request:
 
+```javascript
 /trigger-error?type=banana
+```
 
 ### Structured Incident Logging
 
