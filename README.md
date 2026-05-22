@@ -48,10 +48,12 @@ Supported failure types:
 
 ### Example Requests
 
-```txt
 /trigger-error?type=runtime_error
+
 /trigger-error?type=timeout
+
 /trigger-error?type=memory_spike
+
 /trigger-error?type=dependency_failure
 
 ### Validation
