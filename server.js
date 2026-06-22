@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
+const incidents = [];
 
 // Failure types:
 const FAILURE_TYPES = {
@@ -27,7 +28,7 @@ app.get("/health", (req, res) => {
 
 app.get("/trigger-error", (req, res) => {
   // choose failure type based on query parameter, default to runtime failure if not specified
-  const failureType = req.query.type || FAILURE_TYPES.RUNTIME_FAILURE;
+  const failureType = req.query.type || FAILURE_TYPES.RUNTIME_ERROR;
 
   if (!Object.values(FAILURE_TYPES).includes(failureType)) {
     return res.status(400).json({
@@ -45,6 +46,9 @@ app.get("/trigger-error", (req, res) => {
     severity: "high"
   };
 
+  // store incident
+  incidents.push(incident);
+  
   // Log the incident details to the console for monitoring and debugging
   console.log("INCIDENT LOG:");
   console.log(JSON.stringify(incident, null, 2));   // used .stringify to format the log output for better readability in the console
@@ -66,7 +70,10 @@ app.get("/trigger-error", (req, res) => {
   if (failureType === FAILURE_TYPES.MEMORY_SPIKE) {
     // Simulate a memory spike by creating a large array
     const largeArray = new Array(1e5).fill("memory spike");
-    res.send("Simulated memory spike - check server logs for details");
+    res.json({
+      message: "Simulated memory spike",
+      allocatedItems: largeArray.length
+    });
     return; // exit early to avoid sending multiple responses
   }
 
@@ -80,9 +87,17 @@ app.get("/trigger-error", (req, res) => {
   res.send("Simulated failure triggered");
 });
 
+app.get("/incidents", (req, res) => {
+  res.json({
+    count: incidents.length, 
+    incidents: incidents})
+  }
+);
 
 // This keeps the server running and listens for incoming requests on the specified port. 
 // When the server starts successfully, it logs a message to the console indicating that it's running and on which port.
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+
