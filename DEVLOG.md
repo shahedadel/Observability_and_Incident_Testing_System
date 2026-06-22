@@ -227,13 +227,26 @@ I did this because operational systems should reject invalid states predictably 
 - structured incident objects
 - basic logging 
 
+## Day 3 -- Incident Tracking and Observability
 
+### Added
+- in-memory incident storage
+- /incidents endpoint
+- incident history retrieval
+- runtime exception testing
+
+### Learned
+- failures should be recorded before they occur
+- stack traces identify the exact crash location
+- observability requires historical data, not just live logs
+
+  
 ## Next Steps:
-
-- improve structured logging consistency
-- build an incident history endpoint
+- add request logging
 - add basic failure metrics tracking
+- add incident filtering by type
 - simulate additional failure scenarios
-- integrate Discord alerts (later phase)
-- experiment with AI-generated incident summaries (later phase)
+- integrate Discord webhook alerts
+- experiment with AI-generated incident summaries
+- simulate deployment rollback workflows
 
