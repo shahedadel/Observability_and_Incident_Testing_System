@@ -1,4 +1,4 @@
-# AI Rollback Demo
+# Observability & Incident Testing System
 
 A small DevOps-inspired project exploring deployment failures, rollback workflows, and AI-assisted incident summaries.
 
