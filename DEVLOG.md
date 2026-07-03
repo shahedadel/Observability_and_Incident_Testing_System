@@ -121,8 +121,8 @@ Platform:
 - Vercel
 
 Project name:
-- ai-rollback-demo
-
+- observability_and_incident_testing_system
+  
 Deployment status:
 - successful
 
